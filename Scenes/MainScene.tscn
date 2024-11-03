@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://5i2g4vihfiie"]
+
+[ext_resource type="Script" path="res://scripts/Manager/GameManager.cs" id="1_8cy4c"]
+[ext_resource type="Script" path="res://scripts/Manager/PlayerManager.cs" id="2_g5vvd"]
+[ext_resource type="PackedScene" uid="uid://b2478bxhwc0ml" path="res://assets/Node/PLayer.tscn" id="3_yubve"]
+[ext_resource type="Script" path="res://scripts/Player/PLayer.cs" id="4_qm62b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sm35f"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8adrn"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("_playerManager")]
+script = ExtResource("1_8cy4c")
+_playerManager = NodePath("../PlayerManager")
+
+[node name="PlayerManager" type="CharacterBody2D" parent="."]
+script = ExtResource("2_g5vvd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerManager"]
+show_behind_parent = true
+top_level = true
+light_mask = 0
+position = Vector2(0, 91)
+shape = SubResource("RectangleShape2D_sm35f")
+
+[node name="Player" parent="." instance=ExtResource("3_yubve")]
+script = ExtResource("4_qm62b")
+
+[node name="MainCamera" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="_Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="_Floor"]
+position = Vector2(0, 72)
+shape = SubResource("WorldBoundaryShape2D_8adrn")
