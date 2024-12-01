@@ -8,11 +8,29 @@ public partial class GameManager : Node2D
 	public static EventManager EventManager { get; private set; }
 
 	[Export] private PlayerManager _playerManager;
+	[Export] private MonsterSpawningManager _monsterSpawningManager;
 	public Vector2 PlayerMovementHandler { get; set; }
 
 	public EventManager GetEventManager()
 	{
 		return EventManager;
+	}
+
+	public void SpawnUnit(int index)
+	{
+		_monsterSpawningManager.SpawnMonster(index);
+	}
+
+	private Node2D PanningTarget = null;
+	public void SetPannigTarget(Node2D panningTarget,float delay = 0)
+	{
+		if (panningTarget != null)
+		{
+		PanningTarget = panningTarget;
+			EventManager.TriggerEventAsThread("SetPannigTarget", callback => {
+				GD.Print("SetPannigTarget");
+			}, panningTarget,delay);
+		}
 	}
 
 	private void Initialize()

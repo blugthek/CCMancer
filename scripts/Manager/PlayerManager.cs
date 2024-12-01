@@ -1,3 +1,4 @@
+using System.Reflection.Emit;
 using Godot;
 
 public partial class PlayerManager : CharacterBody2D
@@ -9,6 +10,8 @@ public partial class PlayerManager : CharacterBody2D
     private const float JumpVelocity = -400.0f;
 
     [Export] private Vector2 _rawInput = new Vector2(0, 0);
+
+    [Export] private Node2D target = null;
 
     public void Initialize(EventManager eventManager)
     {
@@ -80,22 +83,38 @@ public partial class PlayerManager : CharacterBody2D
                 _eventManager.TriggerEventAsThread("_Input_J", parameters => { });
             }
         }
+
+        if (@event is InputEventMouseButton eventMouseButton)
+        {
+            if (eventMouseButton.ButtonIndex == MouseButton.Left && eventMouseButton.Pressed)
+            {
+                _eventManager.TriggerEventAsThread("_Input_Click_Left", parameters => { });
+            }
+
+            if (eventMouseButton.ButtonIndex == MouseButton.Right && eventMouseButton.Pressed)
+            {
+                _eventManager.TriggerEventAsThread("_Input_Click_Right", parameters => { });
+            }
+        }
     }
 
     private float timer = 0f;
     public override void _PhysicsProcess(double delta)
     {
         //Simulate gravity
-        _gameManager.PlayerMovementHandler = _rawInput;
+        // _gameManager.PlayerMovementHandler = _rawInput;
 
-        //TODO:: Make player do something (adaptor)
+        // //TODO:: Make player do something (adaptor)
 
-        _rawInput = _gameManager.PlayerMovementHandler;
-        // _rawInput += GetGravity() * (float)delta;
-        timer += (float)delta;
-        if (timer < 0.333f) return;
-        timer = 0f;
-        SteppingFunction();
+        // _rawInput = _gameManager.PlayerMovementHandler;
+        // // _rawInput += GetGravity() * (float)delta;
+        // timer += (float)delta;
+        // if (timer < 0.333f) return;
+        // timer = 0f;
+        // SteppingFunction();
+        // var localPos = new Vector2(GlobalPosition.X, GlobalPosition.Y);
+        // localPos.X = target.GlobalPosition.X;
+        // this.GlobalPosition = localPos;
     }
 
     private void SteppingFunction()
