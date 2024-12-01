@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlp1t4wd3sgbg"]
+
+[ext_resource type="Texture2D" uid="uid://d0xw2k506w7l" path="res://assets/icon.svg" id="1_m7uj1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wj50q"]
+
+[node name="EnemyDummy" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wj50q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.390625, 0.59375)
+texture = ExtResource("1_m7uj1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(107.52, -42.1053)
+scale = Vector2(0.615313, 0.415296)
+texture = ExtResource("1_m7uj1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-110.08, -42.1053)
+scale = Vector2(0.615313, 0.415296)
+texture = ExtResource("1_m7uj1")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(0, -104.421)
+scale = Vector2(0.68, 0.59375)
+texture = ExtResource("1_m7uj1")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(87.0628, 117.364)
+scale = Vector2(0.240356, 0.833817)
+texture = ExtResource("1_m7uj1")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-84.4572, 114.838)
+scale = Vector2(0.240356, 0.820659)
+texture = ExtResource("1_m7uj1")
