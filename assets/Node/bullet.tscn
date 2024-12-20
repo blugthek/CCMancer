@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://cnn7e1qf008ar"]
 
-[ext_resource type="Script" path="res://scripts/Player/Bullet.cs" id="1_ogd13"]
-[ext_resource type="Texture2D" uid="uid://rvcrj5rh4bvn" path="res://assets/sprites/player/Sprite_bullet_full.png" id="3_xy7o3"]
+[ext_resource type="Script" path="res://Scripts/Player/Bullet.cs" id="1_qt0sd"]
+[ext_resource type="Texture2D" uid="uid://lyuyugjv3wxa" path="res://Assets/sprites/player/Sprite_bullet_full.png" id="3_xy7o3"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_146eb"]
 
@@ -137,7 +137,7 @@ animations = [{
 collision_layer = 0
 collision_mask = 0
 motion_mode = 1
-script = ExtResource("1_ogd13")
+script = ExtResource("1_qt0sd")
 canvasTexture = SubResource("CanvasTexture_146eb")
 
 [node name="hitBox" type="Area2D" parent="."]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://hj74m0dcbvsc"]
 
 [ext_resource type="Script" path="res://scripts/Camera/CameraPanningTest.cs" id="1_o5x17"]
-[ext_resource type="Texture2D" uid="uid://d0xw2k506w7l" path="res://assets/icon.svg" id="1_pogl6"]
+[ext_resource type="Texture2D" uid="uid://d0xw2k506w7l" path="res://Assets/icon.svg" id="1_pogl6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkw5u"]
 size = Vector2(14, 14)

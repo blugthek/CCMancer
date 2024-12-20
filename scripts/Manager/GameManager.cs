@@ -7,7 +7,7 @@ public partial class GameManager : Node2D
 	public static GameManager Instance { get; private set; }
 	public static EventManager EventManager { get; private set; }
 
-	[Export] private PlayerManager _playerManager;
+	// [Export] private PlayerManager _playerManager;
 	[Export] private MonsterSpawningManager _monsterSpawningManager;
 	public Vector2 PlayerMovementHandler { get; set; }
 
@@ -43,7 +43,7 @@ public partial class GameManager : Node2D
 		Instance = this;
 		EventManager = new EventManager();
 		// _playerManager = new PlayerManager(this);
-		_playerManager.Initialize(EventManager);
+		// _playerManager.Initialize(EventManager);
 		GD.Print("GameManager initialized");
 
 		EventManager.RegisterEvent("_Input_Accept", parameters =>

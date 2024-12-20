@@ -1,17 +1,16 @@
-[gd_scene load_steps=80 format=3 uid="uid://b2478bxhwc0ml"]
+[gd_scene load_steps=79 format=3 uid="uid://b2478bxhwc0ml"]
 
-[ext_resource type="Script" path="res://scripts/Player/Player.cs" id="1_d5o57"]
-[ext_resource type="Texture2D" uid="uid://c2pcl2dsw8fgv" path="res://assets/sprites/player/dash.png" id="2_1uaat"]
-[ext_resource type="Texture2D" uid="uid://d27bxgqbni1de" path="res://assets/sprites/player/idle.png" id="2_qlfnr"]
-[ext_resource type="Texture2D" uid="uid://brofyeow1olov" path="res://assets/sprites/player/death.png" id="3_kb1cl"]
-[ext_resource type="Texture2D" uid="uid://duomjvh3dw26m" path="res://assets/sprites/player/jump.png" id="4_0rg14"]
-[ext_resource type="Texture2D" uid="uid://ba6noypfcctcx" path="res://assets/sprites/player/melee_attack.png" id="5_5agoj"]
-[ext_resource type="Texture2D" uid="uid://dh87nppnok7bm" path="res://assets/sprites/player/melee_attack_air.png" id="6_1354h"]
-[ext_resource type="Texture2D" uid="uid://dvslielv3omur" path="res://assets/sprites/player/run.png" id="6_jer20"]
-[ext_resource type="Script" path="res://scripts/Player/WeaponHandler.cs" id="7_6hh3m"]
-[ext_resource type="Texture2D" uid="uid://hd6wc21gerwu" path="res://assets/sprites/player/range_attack.png" id="7_qrdcx"]
-[ext_resource type="PackedScene" uid="uid://cnn7e1qf008ar" path="res://assets/Node/bullet.tscn" id="10_3lu0l"]
-[ext_resource type="Texture2D" uid="uid://deijqt1oocncp" path="res://assets/sprites/player/sword_sprite_complete.png" id="11_3qnkn"]
+[ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_ub7ou"]
+[ext_resource type="Texture2D" uid="uid://dy843v0y8k0iv" path="res://Assets/sprites/player/dash.png" id="2_1uaat"]
+[ext_resource type="Texture2D" uid="uid://dmjtfix88bx8y" path="res://Assets/sprites/player/idle.png" id="2_qlfnr"]
+[ext_resource type="Texture2D" uid="uid://bf3osgfl83jr5" path="res://Assets/sprites/player/death.png" id="3_kb1cl"]
+[ext_resource type="Texture2D" uid="uid://ctlhgytfkjcew" path="res://Assets/sprites/player/jump.png" id="4_0rg14"]
+[ext_resource type="Texture2D" uid="uid://uewpstmejia8" path="res://Assets/sprites/player/melee_attack.png" id="5_5agoj"]
+[ext_resource type="Texture2D" uid="uid://c6euks8ys57q5" path="res://Assets/sprites/player/melee_attack_air.png" id="6_1354h"]
+[ext_resource type="Texture2D" uid="uid://ciuqih4rcgivv" path="res://Assets/sprites/player/run.png" id="6_jer20"]
+[ext_resource type="Texture2D" uid="uid://csja35g4n0pou" path="res://Assets/sprites/player/range_attack.png" id="7_qrdcx"]
+[ext_resource type="Script" path="res://Scripts/Player/WeaponHandler.cs" id="10_dh0md"]
+[ext_resource type="Texture2D" uid="uid://tcsekuwqo4ot" path="res://Assets/sprites/player/sword_sprite_complete.png" id="11_3qnkn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_robd4"]
 atlas = ExtResource("2_1uaat")
@@ -569,7 +568,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite2D", "weapon_animatedSprite2D", "weapon_handler", "animationPlayer")]
-script = ExtResource("1_d5o57")
+script = ExtResource("1_ub7ou")
 animatedSprite2D = NodePath("p_anim")
 weapon_animatedSprite2D = NodePath("w_anim")
 weapon_handler = NodePath("w_handler")
@@ -593,11 +592,9 @@ libraries = {
 position = Vector2(1, -10)
 shape = SubResource("CapsuleShape2D_7b8i6")
 
-[node name="w_handler" type="Node2D" parent="." node_paths=PackedStringArray("_barrelTip")]
-script = ExtResource("7_6hh3m")
-_bullet = ExtResource("10_3lu0l")
+[node name="w_handler" type="Node2D" parent="."]
+script = ExtResource("10_dh0md")
 _bulletCount = 1
-_barrelTip = NodePath("../w_tip")
 
 [node name="w_area" type="Area2D" parent="w_handler"]
 position = Vector2(1, -13)

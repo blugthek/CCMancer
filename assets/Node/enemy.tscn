@@ -1,8 +1,8 @@
 [gd_scene load_steps=29 format=3 uid="uid://cvtpjhvwgqv2w"]
 
-[ext_resource type="Script" path="res://scripts/Monster/Enemy.cs" id="1_pxlmg"]
-[ext_resource type="PackedScene" uid="uid://cnn7e1qf008ar" path="res://assets/Node/bullet.tscn" id="2_2uvkg"]
-[ext_resource type="Texture2D" uid="uid://da5gd1i3pn0dl" path="res://assets/sprites/Monster/Salmon/tunaman_sprite_sheet.png" id="2_num5d"]
+[ext_resource type="Script" path="res://Scripts/Monster/Enemy.cs" id="1_rwper"]
+[ext_resource type="PackedScene" uid="uid://cnn7e1qf008ar" path="res://Assets/Node/bullet.tscn" id="2_2uvkg"]
+[ext_resource type="Texture2D" uid="uid://bnsn8gxqgtds" path="res://Assets/sprites/Monster/Salmon/tunaman_sprite_sheet.png" id="2_num5d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ca85e"]
 radius = 4.0
@@ -193,7 +193,7 @@ height = 18.0
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("detect_area", "animatedSprite2D", "_barrelTip")]
 scale = Vector2(1.5, 1.5)
 collision_layer = 0
-script = ExtResource("1_pxlmg")
+script = ExtResource("1_rwper")
 health = 21
 damage = 5
 detect_area = NodePath("detect_area")

@@ -396,4 +396,77 @@ public partial class Player : CharacterBody2D
 	{
 		weapon_handler.Shoot();
 	}
+
+	public override void _Input(InputEvent @event)
+    {
+        if (@event is InputEventKey eventKey)
+        {
+            if (eventKey.Keycode == Key.W && eventKey.Pressed)
+            {
+                _rawInput.Y = JumpVelocity;
+            }
+
+            if (eventKey.Keycode == Key.S && eventKey.Pressed)
+            {
+                _rawInput.Y = -1;
+            }
+
+            if (eventKey.Keycode == Key.A && eventKey.Pressed)
+            {
+                _rawInput.X = -1 * Speed;
+            }
+
+            if (eventKey.Keycode == Key.D && eventKey.Pressed)
+            {
+                _rawInput.X = Speed;
+            }
+
+            if (eventKey.Keycode == Key.Shift && !eventKey.Pressed)
+            {
+                _eventManager.TriggerEventAsThread("_Input_Shift", parameters => { });
+            }
+
+            if (eventKey.Keycode == Key.Space && eventKey.Pressed)
+            {
+                _eventManager.TriggerEventAsThread("_Input_Accept", Args =>
+                {
+                    var callback = (int)Args;
+                    switch (callback)
+                    {
+                        case 0:
+                            GD.Print("Input accepted");
+                            break;
+                        case 1:
+                            GD.Print("Input rejected");
+                            break;
+                    }
+                    // GD.Print(Args as string);
+                    // GD.Print("Input accepted");
+                }, _rawInput);
+            }
+
+            if (eventKey.Keycode == Key.K && eventKey.Pressed)
+            {
+                _eventManager.TriggerEventAsThread("_Input_K", parameters => { });
+            }
+
+            if (eventKey.Keycode == Key.J && eventKey.Pressed)
+            {
+                _eventManager.TriggerEventAsThread("_Input_J", parameters => { });
+            }
+        }
+
+        if (@event is InputEventMouseButton eventMouseButton)
+        {
+            if (eventMouseButton.ButtonIndex == MouseButton.Left && eventMouseButton.Pressed)
+            {
+                _eventManager.TriggerEventAsThread("_Input_Click_Left", parameters => { });
+            }
+
+            if (eventMouseButton.ButtonIndex == MouseButton.Right && eventMouseButton.Pressed)
+            {
+                _eventManager.TriggerEventAsThread("_Input_Click_Right", parameters => { });
+            }
+        }
+    }
 }
