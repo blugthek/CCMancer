@@ -36,9 +36,12 @@ public partial class Enemy : CharacterBody2D, IDamageable
 	{
 		// base._Ready();
 		animatedSprite2D = GetNode<AnimatedSprite2D>("enemy_anim");
+		
 		detect_area = GetNode<Area2D>("detect_area");
 		hitBox.Initialize(detect_area);
 		hitBox.HandleHit(OnBodyEntered);
+		// hitBox.HandleHit(this, nameof(OnBodyEntered));
+
 		eventManager = GameManager.Instance.GetEventManager();
 		eventManager.TriggerEventAsThread("_Req_Player", callback => player = (CharacterBody2D)callback);
 		eventManager.RegisterEvent("_Player_Dead", callback =>

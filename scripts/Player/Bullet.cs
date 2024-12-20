@@ -30,7 +30,7 @@ public partial class Bullet : CharacterBody2D
 			return;
 		}
 		hitBox.Initialize(_hitBoxes);
-		hitBox.HandleHit((Area2D body) =>
+		hitBox.HandleHit((Node2D body) =>
 		{
 			if (body == null) return;
 			var dmg = body.GetParentOrNull<IDamageable>();

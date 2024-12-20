@@ -48,8 +48,8 @@ public partial class CameraHandler : Camera2D
 		_eventManager.RegisterEvent("SetPannigTarget", parameters =>
 		{
 			GD.Print("Panning Duplicate test");
-			var delay = (float)parameters[2];
-			if (delay != null)
+			var delay = parameters[2] != null ? (float) parameters[2] : 0.995f;
+			if (delay != 0.995f)
 			{
 				GD.Print("Panning Duplicate");
 				while (focusTarget == 0)

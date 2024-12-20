@@ -34,7 +34,7 @@ public partial class WeaponHandler : Node2D
 
 
         _hitBox.Initialize(GetNode<Area2D>("w_area"));
-        _hitBox.HandleHit((Area2D body) =>
+        _hitBox.HandleHit((Node2D body) =>
         {
             GD.Print("hit ", body);
             var Bull = body.GetParentOrNull<IDamageable>();

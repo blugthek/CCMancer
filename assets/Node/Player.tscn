@@ -570,7 +570,6 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite2D", "weapon_animatedSprite2D", "weapon_handler", "animationPlayer")]
 script = ExtResource("1_d5o57")
-JumpVelocity = -300.0
 animatedSprite2D = NodePath("p_anim")
 weapon_animatedSprite2D = NodePath("w_anim")
 weapon_handler = NodePath("w_handler")

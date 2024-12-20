@@ -6,10 +6,29 @@ using System.Threading;
 
 public partial class Player : CharacterBody2D
 {
-	[Export] public float Speed = 300.0f;
-	[Export] public float JumpVelocity = -500.0f;
+	float Speed,JumpVelocity;
+	int health;
 
-	[Export] int health = 3;
+	private ExtendedComponent Component = new ExtendedComponent();
+	private void ComponentSetup()
+	{
+		Component.Set("Health",new HealthData(3,100));
+		Component.Set("Stat",new UnitStat(300,500,1,null));
+	}
+
+	private void UnitSetup()
+	{
+		Component.Get<UnitStat>("Stat",(UnitStat) => {
+			Speed = UnitStat.HorizontalSpeed;
+			JumpVelocity = UnitStat.JumpSpeed * -1;
+		});
+
+		Component.Get<HealthData>("Health",(HealthData) => {
+			health = HealthData.CurrentHealth;
+		});
+	}
+
+	private HealthData healthData = new HealthData(100,100);
 
 	private GameManager _gameManager;
 	private EventManager _eventManager;
@@ -81,6 +100,9 @@ public partial class Player : CharacterBody2D
 
 	public override void _Ready()
 	{
+		ComponentSetup();
+		UnitSetup();
+		GD.Print(health);
 		_gameManager = GameManager.Instance;
 
 		_eventManager = _gameManager.GetEventManager();
