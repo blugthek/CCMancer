@@ -108,20 +108,11 @@ public partial class Bullet : CharacterBody2D
 		// GD.Print("Bullet physics process, pos: " + Position);
 	}
 
-	public void Init(Player.PlayerConfig playerConfig, float momentum)
-	{
-		_sp = _sp * playerConfig.Facing;
-		_sp += momentum;
-		// Thread thread = new Thread(() =>
-		// {
-		// 	Thread.Sleep(5000);
-		// 	if (this != null)
-		// 	{
-		// 		CallDeferred(nameof(PlayBreak));
-		// 	}
-		// });
-		// thread.Start();
-	}
+	// public void Init(Player.PlayerConfig playerConfig, float momentum)
+	// {
+	// 	_sp = _sp * playerConfig.Facing;
+	// 	_sp += momentum;
+	// }
 
 	private void PlayBreak()
 	{

@@ -14,7 +14,7 @@ public partial class WeaponHandler : Node2D
     [Export] private Node2D _barrelTip;
     // [Export] private Area2D _hitBoxes = new Area2D();
     public float l_momentum = 0.0f;
-    private PlayerConfig playerConfig = new PlayerConfig();
+    // private PlayerConfig playerConfig = new PlayerConfig();
     private Player player = null;
 
     private EventManager _eventManager;
@@ -44,16 +44,16 @@ public partial class WeaponHandler : Node2D
                 Bull.TakeDamage(10);
             }
             var newBullets = body.GetParentOrNull<Bullet>();
-            if (newBullets != null)
-            {
-                playerConfig = player.GetPlayerConfig();
-                l_momentum = player.Velocity.X;
-                // GD.Print("Bullet hit");
-                // // newBullets.QueueFree();
-                GD.Print("Bounce", l_momentum, playerConfig.Facing,l_momentum*playerConfig.Facing);
+            // if (newBullets != null)
+            // {
+            //     playerConfig = player.GetPlayerConfig();
+            //     l_momentum = player.Velocity.X;
+            //     // GD.Print("Bullet hit");
+            //     // // newBullets.QueueFree();
+            //     GD.Print("Bounce", l_momentum, playerConfig.Facing,l_momentum*playerConfig.Facing);
 
-                newBullets.Bounce(l_momentum, playerConfig.Facing);
-            }
+            //     newBullets.Bounce(l_momentum, playerConfig.Facing);
+            // }
         });
         // _eventManager.TriggerEventAsThread("_Req_Player", callback => player = (Player)callback);
 
@@ -65,53 +65,53 @@ public partial class WeaponHandler : Node2D
 
     public void Shoot()
     {
-        // _eventManager.TriggerEventAsThread("_Req_Player", callback => player = (Player)callback);
-        // GD.Print(player);
-        playerConfig = player.GetPlayerConfig();
-        l_momentum = player.Velocity.X;
+        // // _eventManager.TriggerEventAsThread("_Req_Player", callback => player = (Player)callback);
+        // // GD.Print(player);
+        // // playerConfig = player.GetPlayerConfig();
+        // l_momentum = player.Velocity.X;
 
-        // GD.Print("Shooting", _bulletCount,_barrelTip.GlobalPosition);
-        // GD.Print("Bullet Spread: " + _bulletSpread);
+        // // GD.Print("Shooting", _bulletCount,_barrelTip.GlobalPosition);
+        // // GD.Print("Bullet Spread: " + _bulletSpread);
 
-        GD.Print("Facing: " + GlobalRotation, playerConfig.Facing, _barrelTip.Position.X);
-        if (playerConfig.Facing == -1)
-        {
-            _barrelTip.Position = new Vector2(-6, _barrelTip.Position.Y);
-        }
-        else
-        {
-            _barrelTip.Position = new Vector2(6, _barrelTip.Position.Y);
-        }
-        // _bulletCount = 10;
-        for (int i = 0; i < _bulletCount; i++)
-        {
-            var newBullets = (Bullet)_bullet.Instantiate();
-            if (_barrelTip != null) newBullets.Position = _barrelTip.GlobalPosition;
-            // if (playerConfig.Facing == -1) newBullets.GlobalRotation += 180;
-            newBullets.Init(playerConfig, l_momentum);
-            if (_bulletCount > 1)
-            {
-                var arcRad = Mathf.DegToRad(_bulletSpread);
-                var increment = arcRad / (_bulletCount - 1);
-                newBullets.GlobalRotation = (
-                    GlobalRotation +
-                    increment * i -
-                    arcRad / 2
-                );
-            }
-            GetTree().Root.CallDeferred("add_child", newBullets);
-            //     var arcRad = Mathf.DegToRad(_bulletSpread);
-            //     var increment = arcRad / (_bulletCount - 1);
-            //     newBullets.GlobalRotation = (
-            //         GlobalRotation +
-            //         increment * i -
-            //         arcRad / 2
-            //     );
-            // GD.Print("Shooting", _bulletCount);
-            //     GD.Print("" + newBullets.Position);
-            //     CallDeferred("add_child", newBullets);
-            // GetTree().Root.CallDeferred("add_child", newBullets);
-        }
+        // GD.Print("Facing: " + GlobalRotation, playerConfig.Facing, _barrelTip.Position.X);
+        // if (playerConfig.Facing == -1)
+        // {
+        //     _barrelTip.Position = new Vector2(-6, _barrelTip.Position.Y);
+        // }
+        // else
+        // {
+        //     _barrelTip.Position = new Vector2(6, _barrelTip.Position.Y);
+        // }
+        // // _bulletCount = 10;
+        // for (int i = 0; i < _bulletCount; i++)
+        // {
+        //     var newBullets = (Bullet)_bullet.Instantiate();
+        //     if (_barrelTip != null) newBullets.Position = _barrelTip.GlobalPosition;
+        //     // if (playerConfig.Facing == -1) newBullets.GlobalRotation += 180;
+        //     newBullets.Init(playerConfig, l_momentum);
+        //     if (_bulletCount > 1)
+        //     {
+        //         var arcRad = Mathf.DegToRad(_bulletSpread);
+        //         var increment = arcRad / (_bulletCount - 1);
+        //         newBullets.GlobalRotation = (
+        //             GlobalRotation +
+        //             increment * i -
+        //             arcRad / 2
+        //         );
+        //     }
+        //     GetTree().Root.CallDeferred("add_child", newBullets);
+        //     //     var arcRad = Mathf.DegToRad(_bulletSpread);
+        //     //     var increment = arcRad / (_bulletCount - 1);
+        //     //     newBullets.GlobalRotation = (
+        //     //         GlobalRotation +
+        //     //         increment * i -
+        //     //         arcRad / 2
+        //     //     );
+        //     // GD.Print("Shooting", _bulletCount);
+        //     //     GD.Print("" + newBullets.Position);
+        //     //     CallDeferred("add_child", newBullets);
+        //     // GetTree().Root.CallDeferred("add_child", newBullets);
+        // }
     }
 
     public override void _PhysicsProcess(double delta)
